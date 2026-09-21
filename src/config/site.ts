@@ -23,6 +23,20 @@ export type Model = {
   isNew?: boolean
 }
 
+type Spotlight = {
+  /** Nombre que sale en letras gigantes. */
+  name: string
+  /** Texto corto que acompaña al nombre. */
+  text: string
+  /**
+   * Foto que rellena las letras. Mejor HORIZONTAL (p. ej. 1600×900),
+   * guardada en `public/models/`. Vacía = degradado.
+   */
+  photo?: string
+  /** Link de Telegram propio. Vacío = usa el canal principal. */
+  telegram?: string
+}
+
 type Stat = { value: string; label: string }
 
 type SiteConfig = {
@@ -34,17 +48,18 @@ type SiteConfig = {
   /** [0] y [2] van en las tarjetitas del hero, [1] es la cifra grande. */
   stats: [Stat, Stat, Stat]
   categories: string[]
-  /** La primera es la "destacada" del hero. */
+  /** Modelo destacada de la sección "Agencia": su nombre gigante relleno con su foto. */
+  spotlight: Spotlight
+  /** Modelos del carrusel. La primera sale en el retrato del hero. */
   models: Model[]
 }
 
 export const site: SiteConfig = {
-  name: "Arshez",
+  name: "Rose’s Legacy",
 
   seo: {
     title: "Agencia de modelos",
-    description:
-      "Agencia de talento para creadoras de contenido verificadas. Conoce a nuestras modelos y únete a nuestro canal oficial de Telegram.",
+    description: "Modelos verificadas y contenido exclusivo. Conoce a nuestras modelos y únete a nuestro canal oficial de Telegram.",
   },
 
   // ⚠️ CAMBIA ESTOS LINKS por los de tu canal antes de publicar.
@@ -64,8 +79,14 @@ export const site: SiteConfig = {
 
   categories: ["Fitness", "Cosplay", "Lifestyle", "Gamer", "Latinas", "Arte", "Baile", "Moda", "Viajes"],
 
+  spotlight: {
+    name: "Darkyt",
+    text: "Contenido exclusivo cada semana. Descubre todo lo que tiene para ti en nuestro canal.",
+  },
+
   models: [
     { name: "Valentina", tagline: "Fitness & lifestyle", tags: ["Fitness", "Lifestyle"] },
+    { name: "Darkyt", tagline: "Modelo destacada", tags: ["Top", "Exclusiva"] },
     { name: "Camila", tagline: "Cosplay y gaming", tags: ["Cosplay", "Gamer"], isNew: true },
     { name: "Isabella", tagline: "Moda y glamour", tags: ["Moda", "Glamour"] },
     { name: "Luna", tagline: "Arte y fotografía", tags: ["Arte", "Foto"], isNew: true },
@@ -74,5 +95,5 @@ export const site: SiteConfig = {
   ],
 }
 
-/** Link de Telegram de una modelo (o el canal principal si no tiene). */
-export const telegramFor = (model: Model) => model.telegram || site.telegram.channel
+/** Link de Telegram de una modelo (o el canal principal si no tiene uno propio). */
+export const telegramFor = (item: { telegram?: string }) => item.telegram || site.telegram.channel

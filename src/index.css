@@ -19,9 +19,9 @@
 
 /* ─── Tokens de marca ──────────────────────────────────────────────────────── */
 @theme {
-  /* SF Pro en iPhone/Mac (look iOS nativo), Inter en el resto */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Inter Variable", "Segoe UI", Roboto, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  /* Redondeada (estilo SF Pro Rounded de iOS) para toda la web */
+  --font-sans: "Nunito Variable", "Nunito", ui-rounded, system-ui, sans-serif;
+  /* Solo para el nombre gigante relleno con foto */
   --font-poster: "Anton", Impact, "Arial Narrow", sans-serif;
 
   --color-ink: #211032;
@@ -185,15 +185,15 @@
   background-image: var(--gradient-brand);
 }
 
-/* Texto con el degradado de la marca (el padding evita que se corten las itálicas) */
+/* Texto con el degradado de la marca (el padding evita que se recorten los bordes de las letras) */
 @utility text-gradient {
   background-image: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  padding: 0.08em 0.12em 0.12em 0.02em;
-  margin: -0.08em -0.12em -0.12em -0.02em;
+  padding: 0.06em 0.04em;
+  margin: -0.06em -0.04em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }

@@ -7,13 +7,13 @@ type Props = {
   /** Posición de la modelo en la lista (elige el degradado de reserva). */
   index: number
   className?: string
-  /** Muestra la inicial sobre el degradado de reserva. */
+  /** Muestra la inicial sobre el degradado de reserva (útil en miniaturas). */
   initial?: boolean
   eager?: boolean
 }
 
 /** Foto de la modelo, o un degradado con su inicial si todavía no tiene foto. */
-export function ModelPhoto({ model, index, className, initial = true, eager = false }: Props) {
+export function ModelPhoto({ model, index, className, initial = false, eager = false }: Props) {
   if (model.photo) {
     return (
       <img
@@ -37,7 +37,7 @@ export function ModelPhoto({ model, index, className, initial = true, eager = fa
       {initial && (
         <span
           aria-hidden="true"
-          className="absolute inset-0 grid place-items-center pb-[8%] font-display text-[58cqw] leading-none text-white/80 italic"
+          className="absolute inset-0 grid place-items-center pb-[6%] text-[52cqw] leading-none font-black text-white/75"
         >
           {model.name.charAt(0)}
         </span>

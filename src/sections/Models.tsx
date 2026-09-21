@@ -3,11 +3,10 @@ import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 import type { EmblaCarouselType, EmblaEventType } from "embla-carousel"
 import { Button, Link } from "@heroui/react"
-import { BadgeCheck, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowUpRight, BadgeCheck, ChevronLeft, ChevronRight } from "lucide-react"
 import { site, telegramFor, type Model } from "../config/site"
 import { cx } from "../lib/cx"
 import { usePrefersReducedMotion } from "../lib/hooks"
-import { TelegramPlane } from "../components/icons"
 import { ModelPhoto } from "../components/ModelPhoto"
 import { Reveal } from "../components/Reveal"
 import { Eyebrow } from "../components/ui"
@@ -106,16 +105,16 @@ export function Models() {
     <section id="modelos" className="relative py-12 sm:py-20 lg:py-28">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 md:flex-row md:items-end md:justify-between">
         <Reveal>
-          <Eyebrow>(02) Nuestras modelos</Eyebrow>
-          <h2 className="mt-4 font-display text-[3.2rem] leading-[0.92] text-ink sm:text-7xl">
-            Conoce a las <em className="text-gradient">favoritas</em>
+          <Eyebrow>Nuestras modelos</Eyebrow>
+          <h2 className="mt-4 text-[2.6rem] leading-[1.02] font-black tracking-[-0.035em] text-ink sm:text-6xl">
+            Conoce a las <span className="text-gradient">favoritas</span>
           </h2>
-          <p className="mt-4 max-w-md text-[17px] leading-relaxed text-ink-soft">
+          <p className="mt-4 max-w-md text-[17px] leading-relaxed font-medium text-ink-soft">
             Desliza y descubre a la que más te guste. Cada una tiene contenido exclusivo esperándote en Telegram.
           </p>
         </Reveal>
 
-        <div className="flex gap-2">
+        <div className="hidden gap-2 md:flex">
           <Button
             isIconOnly
             aria-label="Modelo anterior"
@@ -189,12 +188,12 @@ function ModelCard({ model, index }: { model: Model; index: number }) {
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black/25 to-transparent" />
 
       <div className="absolute inset-x-4 top-4 flex items-center justify-between">
-        <span className="glass-dark inline-flex items-center gap-1 rounded-full py-1 pr-2.5 pl-1.5 text-[11px] font-semibold text-white">
+        <span className="glass-dark inline-flex items-center gap-1 rounded-full py-1 pr-2.5 pl-1.5 text-[11px] font-extrabold text-white">
           <BadgeCheck className="size-3.5" />
           Verificada
         </span>
         {model.isNew && (
-          <span className="rounded-full bg-gradient-brand px-2.5 py-1 text-[11px] font-semibold text-white shadow-glow">
+          <span className="rounded-full bg-gradient-brand px-2.5 py-1 text-[11px] font-extrabold text-white shadow-glow">
             Nueva
           </span>
         )}
@@ -203,24 +202,24 @@ function ModelCard({ model, index }: { model: Model; index: number }) {
       <div className="glass-photo absolute inset-x-3 bottom-3 rounded-[24px] p-4">
         <div className="flex items-end justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="font-display text-[34px] leading-none text-ink">{model.name}</h3>
-            <p className="mt-1 truncate text-[13px] text-ink-soft">{model.tagline}</p>
+            <h3 className="truncate text-[28px] leading-none font-black tracking-[-0.03em] text-ink">{model.name}</h3>
+            <p className="mt-1.5 truncate text-[13px] font-semibold text-ink-soft">{model.tagline}</p>
           </div>
           <Link
             href={telegramFor(model)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Ver a ${model.name} en Telegram`}
-            className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-brand text-white no-underline shadow-glow transition-transform duration-300 hover:scale-105 hover:no-underline"
+            className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-brand text-white no-underline shadow-glow transition-transform duration-300 hover:rotate-45 hover:no-underline"
           >
-            <TelegramPlane className="size-5" />
+            <ArrowUpRight className="size-5" />
           </Link>
         </div>
         <ul className="mt-3 flex flex-wrap gap-1.5">
           {model.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full bg-white/70 px-2.5 py-0.5 text-[11px] font-medium text-ink-soft ring-1 ring-white"
+              className="rounded-full bg-white/70 px-2.5 py-0.5 text-[11px] font-bold text-ink-soft ring-1 ring-white"
             >
               {tag}
             </li>

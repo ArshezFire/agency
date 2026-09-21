@@ -7,5 +7,6 @@
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="18" fill="url(#g)" />
-  <path fill="#fff" d="M32 12c1.1 10.3 9.7 18.9 20 20-10.3 1.1-18.9 9.7-20 20-1.1-10.3-9.7-18.9-20-20 10.3-1.1 18.9-9.7 20-20z" />
+  <text x="32" y="45.5" text-anchor="middle" fill="#fff" font-size="38" font-weight="900"
+    font-family="ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', Nunito, 'Segoe UI', Arial, sans-serif">R</text>
 </svg>

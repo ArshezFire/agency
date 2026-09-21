@@ -13,13 +13,20 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+      {/* En móvil, al hacer scroll todo se agrupa en una sola barra glass */}
+      <div
+        className={cx(
+          "mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-full transition-[background-color,box-shadow,border-color] duration-500",
+          "max-md:py-1.5 max-md:pr-1.5 max-md:pl-4",
+          scrolled ? "max-md:glass-strong md:border md:border-transparent" : "border border-transparent",
+        )}
+      >
         <a
           href="#inicio"
           aria-label="Ir al inicio"
           className={cx(
-            "flex h-12 items-center rounded-full border border-transparent pr-4 pl-2 transition-[background-color,box-shadow,border-color] duration-500",
-            scrolled && "glass-strong",
+            "flex items-center rounded-full transition-[background-color,box-shadow,border-color] duration-500 md:h-12 md:px-5",
+            scrolled ? "md:glass-strong" : "border border-transparent",
           )}
         >
           <BrandMark />
@@ -29,8 +36,8 @@ export function Navbar() {
         <nav
           aria-label="Secciones"
           className={cx(
-            "hidden rounded-full border border-transparent p-1 transition-[background-color,box-shadow,border-color] duration-500 md:block",
-            scrolled && "glass-strong",
+            "hidden rounded-full p-1 transition-[background-color,box-shadow,border-color] duration-500 md:block",
+            scrolled ? "glass-strong" : "border border-transparent",
           )}
         >
           <div ref={pillRef} className="relative">
@@ -52,7 +59,7 @@ export function Navbar() {
                       data-section={section.id}
                       aria-current={isActive ? "true" : undefined}
                       className={cx(
-                        "relative block rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                        "relative block rounded-full px-4 py-2 text-sm font-bold transition-colors",
                         isActive ? "text-ink" : "text-ink-soft hover:text-ink",
                       )}
                     >

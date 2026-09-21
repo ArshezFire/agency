@@ -1,21 +1,13 @@
 import { useId } from "react"
 
-type IconProps = { className?: string }
-
 // Avión de papel del logo de Telegram (Simple Icons, CC0), en coordenadas absolutas.
 const PLANE =
   "M16.906 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
 
-const SPARKLE = "M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z"
-
-/** useId() devuelve caracteres que no conviene usar dentro de url(#...) */
-function useSvgId(prefix: string) {
-  return prefix + useId().replace(/[^a-zA-Z0-9_-]/g, "")
-}
-
 /** Logo oficial de Telegram: círculo azul con el avión blanco. */
-export function TelegramLogo({ className }: IconProps) {
-  const id = useSvgId("tg")
+export function TelegramLogo({ className }: { className?: string }) {
+  // useId() devuelve caracteres que no conviene usar dentro de url(#...)
+  const id = "tg" + useId().replace(/[^a-zA-Z0-9_-]/g, "")
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false">
       <defs>
@@ -26,34 +18,6 @@ export function TelegramLogo({ className }: IconProps) {
       </defs>
       <circle cx="12" cy="12" r="12" fill={`url(#${id})`} />
       <path d={PLANE} fill="#fff" transform="translate(-.35 .15)" />
-    </svg>
-  )
-}
-
-/** Solo el avión de Telegram; toma el color del texto. */
-export function TelegramPlane({ className }: IconProps) {
-  return (
-    <svg viewBox="4.25 5.8 13.6 13.6" className={className} aria-hidden="true" focusable="false" fill="currentColor">
-      <path d={PLANE} />
-    </svg>
-  )
-}
-
-/** Destello de cuatro puntas. Con `gradient` usa el degradado de la marca. */
-export function Sparkle({ className, gradient = false }: IconProps & { gradient?: boolean }) {
-  const id = useSvgId("sp")
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false">
-      {gradient && (
-        <defs>
-          <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#ff4fa7" />
-            <stop offset=".5" stopColor="#c54ad0" />
-            <stop offset="1" stopColor="#7b3fe4" />
-          </linearGradient>
-        </defs>
-      )}
-      <path d={SPARKLE} fill={gradient ? `url(#${id})` : "currentColor"} />
     </svg>
   )
 }

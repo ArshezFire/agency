@@ -1,4 +1,4 @@
-# Arshez — Landing de la agencia
+# Rose’s Legacy — Landing de la agencia
 
 Landing de una sola página, estilo **bento + glass tipo iOS**, que presenta la agencia y lleva a los visitantes al canal de Telegram.
 
@@ -6,8 +6,8 @@ Landing de una sola página, estilo **bento + glass tipo iOS**, que presenta la 
 
 ## Secciones
 
-1. **Hero**: titular, modelo destacada, la modelo más nueva, cifras y botón al canal.
-2. **Agencia**: el nombre en letras gigantes rellenas con las fotos de las modelos, más un bento con la información de confianza.
+1. **Hero**: titular, retrato de la modelo "Top de la semana", la modelo más nueva, cifras y botón al canal.
+2. **Agencia**: la modelo destacada, con su nombre en letras gigantes rellenas con su foto, más un bento con la información de confianza.
 3. **Modelos**: carrusel con las modelos (se desliza solo, con flechas y puntos).
 4. **Telegram**: llamada a la acción final más accesos directos por modelo.
 
@@ -19,12 +19,13 @@ Todo está en **`src/config/site.ts`**:
 
 | Qué | Dónde |
 | --- | --- |
-| Nombre de la agencia (logo, título de la pestaña, letras gigantes) | `name` |
+| Nombre de la agencia (logo, título de la pestaña, pie de página) | `name` |
 | Título y descripción para Google | `seo` |
 | **Link del canal de Telegram** ⚠️ | `telegram.channel` y `telegram.handle` |
 | Cifras (modelos, fans, contenido) | `stats` |
 | Categorías de la cinta animada | `categories` |
-| Modelos (la primera es la destacada del hero) | `models` |
+| Modelo destacada (nombre gigante, texto y foto horizontal) | `spotlight` |
+| Modelos del carrusel (la primera sale en el retrato del hero) | `models` |
 | Activar o desactivar el aviso +18 | `ageGate` |
 
 ### Fotos de las modelos
@@ -33,6 +34,8 @@ Todo está en **`src/config/site.ts`**:
 2. En `site.ts`, pon la ruta en la modelo: `photo: "/models/valentina.jpg"`.
 
 Quedan mejor verticales (3:4 o 4:5) y en `.jpg` o `.webp` de menos de 300 KB. Mientras una modelo no tenga foto, se muestra un degradado con su inicial.
+
+Para la modelo destacada (`spotlight.photo`) usa una foto **horizontal** (por ejemplo 1600×900): se ve a través de las letras de su nombre.
 
 Cada modelo puede tener su propio link en `telegram`. Si lo dejas vacío, se usa el canal principal.
 

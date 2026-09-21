@@ -44,22 +44,22 @@ export function AgeGate() {
           className="glass-strong items-center rounded-[36px] p-7 text-center sm:p-8"
         >
           <Modal.Header className="items-center gap-4">
-            <span className="grid size-20 place-items-center rounded-[26px] bg-gradient-brand font-display text-4xl text-white shadow-glow">
+            <span className="grid size-20 place-items-center rounded-[26px] bg-gradient-brand text-3xl font-black tracking-tight text-white shadow-glow">
               18+
             </span>
-            <Modal.Heading id="age-title" className="font-display text-4xl leading-none font-normal text-ink">
+            <Modal.Heading id="age-title" className="text-[28px] leading-tight font-black tracking-[-0.03em] text-ink">
               Contenido para adultos
             </Modal.Heading>
           </Modal.Header>
-          <Modal.Body id="age-text" className="text-[15px] leading-relaxed text-ink-soft">
+          <Modal.Body id="age-text" className="text-[15px] leading-relaxed font-medium text-ink-soft">
             {site.name} es un sitio dirigido exclusivamente a mayores de 18 años. Al continuar confirmas que tienes la
             edad legal en tu país.
           </Modal.Body>
           <Modal.Footer className="w-full flex-col-reverse gap-2 sm:flex-row">
-            <Button variant="tertiary" size="lg" fullWidth onPress={leave} className="rounded-full bg-white/70 text-ink ring-1 ring-ink/10">
+            <Button variant="tertiary" size="lg" fullWidth onPress={leave} className="rounded-full bg-white/70 font-extrabold text-ink ring-1 ring-ink/10">
               Salir
             </Button>
-            <Button size="lg" fullWidth onPress={confirm} className="rounded-full bg-gradient-brand text-white shadow-glow">
+            <Button size="lg" fullWidth onPress={confirm} className="rounded-full bg-gradient-brand font-extrabold text-white shadow-glow">
               Soy mayor de 18
             </Button>
           </Modal.Footer>
